@@ -1,7 +1,11 @@
-﻿// Learn more about F# at http://fsharp.org
-// See the 'F# Tutorial' project for more help.
+﻿open System.Drawing
 
 [<EntryPoint>]
 let main argv = 
-    printfn "%A" argv
-    0 // return an integer exit code
+    let bitmap = new Bitmap(16, 16)
+
+    let path = __SOURCE_DIRECTORY__ + @"\"
+
+    bitmap.Save(path + "bitmap.png", Imaging.ImageFormat.Png)
+    printfn "Hello, World"
+    0
