@@ -3,7 +3,12 @@ open System.IO
 
 [<EntryPoint>]
 let main argv = 
-    let bitmap = new Bitmap(16, 16)
+    use bitmap = new Bitmap(16, 16)
+    use graphics = Graphics.FromImage(bitmap)
+    use redPen = new Pen(Brushes.Red)
+    
+    graphics.DrawRectangle(redPen, Rectangle(5, 5, 10, 10))
+
     let path = Path.Combine(__SOURCE_DIRECTORY__, "bitmap.png")
     bitmap.Save(path, Imaging.ImageFormat.Png)
     printfn "Hello, World"
