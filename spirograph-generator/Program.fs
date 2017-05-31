@@ -1,6 +1,19 @@
 ﻿open System.Drawing
 open System.IO
 
+type Plotter = {
+    position: int * int
+    color: Color
+    direction: float
+    bitmap: Bitmap
+    }
+
+let turn amount plotter =
+    plotter
+
+let move distance plotter =
+    plotter
+
 [<EntryPoint>]
 let main argv = 
     use bitmap = new Bitmap(16, 16)
