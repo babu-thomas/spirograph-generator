@@ -9,7 +9,10 @@ type Plotter = {
     }
 
 let turn amount plotter =
-    plotter
+    let newDir = plotter.direction + amount
+    let turned = { plotter with direction = newDir }
+    printfn "%A" turned
+    turned
 
 let move distance plotter =
     plotter
