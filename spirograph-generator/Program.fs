@@ -33,17 +33,19 @@ let move distance plotter =
     moved
 
 [<EntryPoint>]
-let main argv = 
-    use bitmap = new Bitmap(100, 100)
-
-    let initialPlotter = {
-        position = (0, 0)
-        color = Color.Goldenrod
-        direction = 0.0
-        bitmap = bitmap }
+let main argv =
     
-    drawLine (50, 50) initialPlotter |> ignore
-
+    let initialPlotter = {
+        position = (50, 10)
+        color = Color.Goldenrod
+        direction = 180.0
+        bitmap =  new Bitmap(100, 100) }
+    
+    let drawn = initialPlotter
+                |> move 50
+                |> turn -90.0
+                |> move 30
+    
     let path = Path.Combine(__SOURCE_DIRECTORY__, "bitmap.png")
-    bitmap.Save(path, Imaging.ImageFormat.Png)
+    drawn.bitmap.Save(path, Imaging.ImageFormat.Png)
     0
